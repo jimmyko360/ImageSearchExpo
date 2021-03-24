@@ -1,4 +1,6 @@
 import React, {useState, createContext} from 'react'
+import axios from 'axios'
+import {API_TOKEN} from './config.js'
 
 export const ImageContext = createContext({
   //what goes in here?
@@ -11,8 +13,16 @@ export const ImageProvider = ({children}) => {
   const [images, setImages] = useState([]);
   return (
     <ImageContext.Provider value={{
-      images
-      //the GET request may need to be here
+      images,
+      findImages: () => {
+        axios.get(`https://pixabay.com/api/?key=${API_TOKEN}&id=926728`)
+        .then((images)=>{
+          setImages(images.hits)
+        })
+        .catch((err) => {
+          console.log('Error Searching Images:', err)
+        })
+      }
     }}>
       {children}
     </ImageContext.Provider>
