@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState, createContext} from 'react'
 
-export const ImageContext = React.createContext({
+export const ImageContext = createContext({
   //what goes in here?
   //do I need to pass in a default state object here?
   //or is that just for typescript?
@@ -8,10 +8,10 @@ export const ImageContext = React.createContext({
 });
 
 export const ImageProvider = ({children}) => {
-  const [image, setImage] = React.useState('');
+  const [images, setImages] = useState([]);
   return (
     <ImageContext.Provider value={{
-      image
+      images
       //the GET request may need to be here
     }}>
       {children}

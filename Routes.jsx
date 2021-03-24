@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
 import {createStackNavigator} from '@react-navigation/stack'
 import {NavigationContainer} from '@react-navigation/native'
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 });
 
 const Search = ({navigation}) => {
-  const [text, onChangeText] = React.useState('Search by keyword tag');
+  const [text, onChangeText] = useState('Search by keyword tag');
 
   return (
     <Center>
