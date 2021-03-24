@@ -14,8 +14,8 @@ export const ImageProvider = ({children}) => {
   return (
     <ImageContext.Provider value={{
       images,
-      findImages: () => {
-        axios.get(`https://pixabay.com/api/?key=${API_TOKEN}&id=3156440`)
+      findImages: (searchString) => {
+        axios.get(`https://pixabay.com/api/?key=${API_TOKEN}&image_type=photo&q=${searchString}`)
         .then((results)=>{
           setImages(results.data.hits)
         })
