@@ -38,13 +38,13 @@ const Search = ({navigation}) => {
 }
 
 const Results = ({navigation}) => {
-  const {images} = useContext(ImageContext);
+  // const {images} = useContext(ImageContext);
   return (
     <Center>
       <Text>
         List of Result Images Goes Here
       </Text>
-      <Image
+      {/* <Image
         source={
           {uri:images[0].previewURL}
         }
@@ -55,7 +55,7 @@ const Results = ({navigation}) => {
         id={
           images[0].id
         }
-      />
+      /> */}
     </Center>
   )
 }
