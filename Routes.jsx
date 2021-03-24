@@ -5,8 +5,9 @@ import {NavigationContainer} from '@react-navigation/native'
 import {View, Text, Image, Button, TextInput, StyleSheet} from 'react-native'
 import {Center} from './Center.jsx'
 import {ImageContext} from './ImageProvider.jsx'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 
-const Stack = createStackNavigator();
+const Tabs = createBottomTabNavigator();
 
 const styles = StyleSheet.create({
   input: {
@@ -38,24 +39,30 @@ const Search = ({navigation}) => {
 }
 
 const Results = ({navigation}) => {
-  // const {images} = useContext(ImageContext);
+  const {images} = useContext(ImageContext);
   return (
     <Center>
       <Text>
         List of Result Images Goes Here
       </Text>
-      {/* <Image
-        source={
-          {uri:images[0].previewURL}
-        }
-        style={{
-          width: images[0].previewWidth,
-          height: images[0].previewHeight
-        }}
-        id={
-          images[0].id
-        }
-      /> */}
+      {
+        images.map((image)=>{
+          return(
+            <Image
+            source={
+              {uri:image.previewURL}
+            }
+            style={{
+              width: image.previewWidth,
+              height: image.previewHeight
+            }}
+            key={
+              image.id
+            }
+          />
+          )
+        })
+      }
     </Center>
   )
 }
@@ -63,10 +70,10 @@ const Results = ({navigation}) => {
 export const Routes = ({}) => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Search'>
-        <Stack.Screen name='Search' component={Search}/>
-        <Stack.Screen name='Results' component={Results}/>
-      </Stack.Navigator>
+      <Tabs.Navigator initialRouteName='Search'>
+        <Tabs.Screen name='Search' component={Search}/>
+        <Tabs.Screen name='Results' component={Results}/>
+      </Tabs.Navigator>
     </NavigationContainer>
   );
 }
