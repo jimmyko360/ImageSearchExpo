@@ -19,19 +19,23 @@ const styles = StyleSheet.create({
 });
 
 const Search = ({navigation}) => {
-  const [text, onChangeText] = useState('Search by keyword tag');
+  const [text, onChangeText] = useState('');
   const {images, findImages} = useContext(ImageContext);
 
   return (
     <Center>
-      <Text>Search Bar Goes Here</Text>
+      <Text>
+      Search by Keyword Tags,
+      </Text>
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
         value={text}
       />
       <Button title='Find Images' onPress={() => {
-        findImages();
+        let textSearch = text.replace(/ /g, '+')
+        console.log(textSearch)
+        findImages(textSearch);
         navigation.navigate('Results')
       }}></Button>
     </Center>
@@ -41,10 +45,6 @@ const Search = ({navigation}) => {
 const Results = ({navigation}) => {
   const {images} = useContext(ImageContext);
   return (
-    <Center>
-      <Text>
-        List of Result Images Goes Here
-      </Text>
       {
         images.map((image)=>{
           return(
@@ -63,7 +63,7 @@ const Results = ({navigation}) => {
           )
         })
       }
-    </Center>
+    </View>
   )
 }
 
