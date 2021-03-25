@@ -27,6 +27,7 @@ export const Details = ({navigation}) => {
         searchTags.map((searchTag) => {
           return (
             <Button
+              key={searchTag}
               title={`#${searchTag}`}
               onPress={() => {
                 let textSearch = searchTag.replace(/ /g, '+');
