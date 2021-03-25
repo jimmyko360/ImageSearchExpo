@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react'
 import axios from 'axios'
-import {createStackNavigator} from '@react-navigation/stack'
 import {NavigationContainer} from '@react-navigation/native'
 import {View, Text, Image, Button, TextInput, StyleSheet, FlatList, TouchableOpacity} from 'react-native'
 import {Center} from './Center.jsx'
@@ -20,12 +19,14 @@ const styles = StyleSheet.create({
 
 const Search = ({navigation}) => {
   const [text, onChangeText] = useState('');
-  const {images, findImages} = useContext(ImageContext);
+  const {findImages} = useContext(ImageContext);
 
   return (
     <Center>
       <Text>
-      Search by Keyword Tags,
+        Search by Keyword Tags,
+        {'\n'}
+        e.g. yellow flower
       </Text>
       <TextInput
         style={styles.input}
@@ -42,21 +43,25 @@ const Search = ({navigation}) => {
 }
 
 const Results = ({navigation}) => {
-  const {images} = useContext(ImageContext);
+  const {images, getDetails} = useContext(ImageContext);
 
   return (
-    <View>
+    <Center>
       <FlatList
         data={images}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({item}) => {
           return (
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={()=>{
+              console.log('Hello World')
+              getDetails(item.id);
+            }}>
               <Image
                 source={{uri:item.previewURL}}
                 style={{
                   width: item.previewWidth,
-                  height: item.previewHeight
+                  height: item.previewHeight,
                 }}
                 id={item.id}
               />
@@ -64,7 +69,30 @@ const Results = ({navigation}) => {
           )
         }}
       />
-    </View>
+    </Center>
+  )
+}
+
+const Details = ({navigation}) => {
+  const {details} = useContext(ImageContext);
+
+  return (
+    <Center>
+      <Image
+        source={
+          {uri:details.largeImageURL}
+        }
+        style={{
+          width: details.webformatWidth,
+          height: details.webformatHeight,
+        }}
+      />
+      <Text>
+        Author: {details.user}
+        {'\n'}
+        Tags: {details.tags}
+      </Text>
+    </Center>
   )
 }
 
@@ -74,6 +102,7 @@ export const AppTabs = ({}) => {
       <Tabs.Navigator initialRouteName='Search'>
         <Tabs.Screen name='Search' title='Search' component={Search}/>
         <Tabs.Screen name='Results' title='Results' component={Results}/>
+        <Tabs.Screen name='Details' title='Details' component={Details}/>
       </Tabs.Navigator>
     </NavigationContainer>
   );
