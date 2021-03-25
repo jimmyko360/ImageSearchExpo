@@ -6,7 +6,9 @@ export const ImageContext = createContext({});
 
 export const ImageProvider = ({children}) => {
   const [images, setImages] = useState([]);
-  const [details, setDetails] = useState({});
+  const [details, setDetails] = useState({
+    tags: 'placeholder, tags'
+  });
 
   return (
     <ImageContext.Provider value={{
