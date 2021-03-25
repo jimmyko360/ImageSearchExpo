@@ -1,6 +1,5 @@
 import React, {useContext} from 'react'
-import {FlatList, TouchableOpacity, Image} from 'react-native'
-import {Center} from '../Center.jsx'
+import {View, FlatList, TouchableOpacity, Image} from 'react-native'
 import {ImageContext} from '../ImageProvider.jsx'
 
 
@@ -8,9 +7,16 @@ export const Results = ({navigation}) => {
   const {images, getDetails} = useContext(ImageContext);
 
   return (
-    <Center>
+    <View>
       <FlatList
         data={images}
+        contentContainerStyle={{
+          alignItems:'center',
+          justifyContent:'center'
+        }}
+        style={{
+          width: '100%'
+        }}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({item}) => {
           return (
@@ -31,6 +37,6 @@ export const Results = ({navigation}) => {
           )
         }}
       />
-    </Center>
+    </View>
   )
 }
