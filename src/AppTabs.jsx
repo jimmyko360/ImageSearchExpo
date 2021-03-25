@@ -36,7 +36,7 @@ const Search = ({navigation}) => {
         let textSearch = text.replace(/ /g, '+')
         findImages(textSearch);
         navigation.navigate('Results')
-      }}></Button>
+      }}/>
     </Center>
   )
 }
