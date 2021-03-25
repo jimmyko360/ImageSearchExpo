@@ -18,7 +18,11 @@ export const Search = ({navigation}) => {
 
   return (
     <Center>
-      <Text>
+      <Text
+        style={{
+          textAlign: 'center'
+        }}
+      >
         Search by Keyword Tags,
         {'\n'}
         e.g. yellow flower
