@@ -68,7 +68,7 @@ const Results = ({navigation}) => {
   )
 }
 
-export const Routes = ({}) => {
+export const AppTabs = ({}) => {
   return (
     <NavigationContainer>
       <Tabs.Navigator initialRouteName='Search'>
