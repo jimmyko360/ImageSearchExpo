@@ -32,11 +32,14 @@ export const Search = ({navigation}) => {
         onChangeText={onChangeText}
         value={text}
       />
-      <Button title='Find Images' onPress={() => {
-        let textSearch = text.replace(/ /g, '+')
-        findImages(textSearch);
-        navigation.navigate('Results')
-      }}/>
+      <Button
+        title='Find Images'
+        onPress={() => {
+          let textSearch = text.replace(/ /g, '+');
+          findImages(textSearch);
+          navigation.navigate('Results');
+        }}
+      />
     </Center>
   )
 }
