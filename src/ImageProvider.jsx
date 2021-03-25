@@ -24,7 +24,6 @@ export const ImageProvider = ({children}) => {
       getDetails: (imageID) => {
         axios.get(`https://pixabay.com/api/?key=${API_TOKEN}&image_type=photo&id=${imageID}`)
         .then((results) => {
-          console.log('a single image:', results.data.hits[0])
           setDetails(results.data.hits[0])
         })
         .catch((err) => {
