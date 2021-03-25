@@ -36,9 +36,9 @@ export const AppTabs = ({}) => {
           inactiveTintColor: 'gray',
         }}
       >
-        <Tabs.Screen name='Search' title='Search' component={Search}/>
-        <Tabs.Screen name='Results' title='Results' component={Results}/>
-        <Tabs.Screen name='Details' title='Details' component={Details}/>
+        <Tabs.Screen name='Search' component={Search}/>
+        <Tabs.Screen name='Results' component={Results}/>
+        <Tabs.Screen name='Details' component={Details}/>
       </Tabs.Navigator>
     </NavigationContainer>
   );

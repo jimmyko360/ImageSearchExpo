@@ -20,8 +20,6 @@ export const Details = ({navigation}) => {
       />
       <Text>
         Author: {details.user}
-        {'\n'}
-        Tags:
       </Text>
       {
         searchTags.map((searchTag) => {
