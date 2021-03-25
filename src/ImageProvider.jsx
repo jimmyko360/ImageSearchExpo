@@ -1,6 +1,6 @@
 import React, {useState, createContext} from 'react'
 import axios from 'axios'
-import {API_TOKEN} from './config.js'
+import {API_TOKEN} from '../config.js'
 
 export const ImageContext = createContext({
   //what goes in here?

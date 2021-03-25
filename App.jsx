@@ -1,3 +1,3 @@
-import {Providers} from './Providers.jsx'
+import {Providers} from './src/Providers.jsx'
 
 export default Providers;
