@@ -13,12 +13,12 @@
 ## Steps to Run
 1. In the repository's root directory, create a copy of 'example.config.js' and rename it 'config.js'
    - config.js will be gitignored       
-   - ![image](https://user-images.githubusercontent.com/64621853/112542606-26736780-8d8b-11eb-8296-a2769fc057c8.png)
+   - ![image](https://user-images.githubusercontent.com/64621853/112543122-baddca00-8d8b-11eb-8ec3-eeca1c06b0c0.png)
 2. Replace 'PIXABAY_API_KEY_GOES_HERE' with your Pixabay API key as a string
 3. From the repo's root directory, run `npm start` or `expo start`
    - Expo Developer Tools will have opened in your browser at http://localhost:19002/
    - Make note of the QR code in the bottom lefthand corner
-   - ![image](https://user-images.githubusercontent.com/64621853/112542540-10fe3d80-8d8b-11eb-8b43-18cb36bd6896.png)
+   - ![image](https://user-images.githubusercontent.com/64621853/112542927-82d68700-8d8b-11eb-8b63-e5082f0fc32b.png)
 4. Use Expo Go to view the app on your device
    - If on an Android device, open Expo Go and click "Scan QR Code"
    - If on an iOS device, open Camera and scan the QR code 
