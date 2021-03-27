@@ -15,7 +15,8 @@
    - config.js will be gitignored       
    - ![image](https://user-images.githubusercontent.com/64621853/112543122-baddca00-8d8b-11eb-8ec3-eeca1c06b0c0.png)
 2. Replace 'PIXABAY_API_KEY_GOES_HERE' with your Pixabay API key as a string
-3. From the repo's root directory, run `npm start` or `expo start`
+3. From the repo's root directory, run `npm install`
+4. Then, run `npm start` or `expo start`
    - Expo Developer Tools will have opened in your browser at http://localhost:19002/
    - Make note of the QR code in the bottom lefthand corner
    - ![image](https://user-images.githubusercontent.com/64621853/112542927-82d68700-8d8b-11eb-8b63-e5082f0fc32b.png)
