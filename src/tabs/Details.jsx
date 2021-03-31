@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import {Image, Text, Button} from 'react-native'
 import {Center} from '../Center.jsx'
 import {ImageContext} from '../ImageProvider.jsx'
@@ -7,15 +7,15 @@ import {API_TOKEN} from '../../config.js'
 
 export const Details = ({navigation}) => {
   const {details, findImages, id, setId, setDetails} = useContext(ImageContext);
-  // const searchTags = details.tags.split(',')
-  let searchTags = [];
+  const [searchTags, setSearchTags] = useState([])
+  // let searchTags = [];
 
   useEffect(()=> {
     axios.get(`https://pixabay.com/api/?key=${API_TOKEN}&image_type=photo&id=${id}`)
     .then((results) => {
+      setSearchTags(results.data.hits[0].tags.split(','));
+      console.log('searchTags:', searchTags)
       setDetails(results.data.hits[0]);
-    }).then(()=> {
-      searchTags = details.tags.split(',');
     })
     .catch((err) => {
       console.log('Error Getting Image Details:', err)
@@ -38,6 +38,7 @@ export const Details = ({navigation}) => {
       </Text>
       {
         searchTags.map((searchTag) => {
+          console.log(searchTag)
           return (
             <Button
               key={searchTag}
