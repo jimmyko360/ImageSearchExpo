@@ -1,11 +1,26 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {Image, Text, Button} from 'react-native'
 import {Center} from '../Center.jsx'
 import {ImageContext} from '../ImageProvider.jsx'
+import axios from 'axios'
+import {API_TOKEN} from '../../config.js'
 
 export const Details = ({navigation}) => {
-  const {details, findImages} = useContext(ImageContext);
-  const searchTags = details.tags.split(',')
+  const {details, findImages, id, setId, setDetails} = useContext(ImageContext);
+  // const searchTags = details.tags.split(',')
+  let searchTags = [];
+
+  useEffect(()=> {
+    axios.get(`https://pixabay.com/api/?key=${API_TOKEN}&image_type=photo&id=${id}`)
+    .then((results) => {
+      setDetails(results.data.hits[0]);
+    }).then(()=> {
+      searchTags = details.tags.split(',');
+    })
+    .catch((err) => {
+      console.log('Error Getting Image Details:', err)
+    })
+  }, [id])
 
   return (
     <Center>

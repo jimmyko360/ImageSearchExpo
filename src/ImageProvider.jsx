@@ -7,13 +7,18 @@ export const ImageContext = createContext({});
 export const ImageProvider = ({children}) => {
   const [images, setImages] = useState([]);
   const [details, setDetails] = useState({
-    tags: 'click, me'
+    // tags: 'click, me'
   });
+
+  const [id, setId] = useState('')
 
   return (
     <ImageContext.Provider value={{
       images,
       details,
+      setDetails,
+      id,
+      setId,
       findImages: (searchString) => {
         axios.get(`https://pixabay.com/api/?key=${API_TOKEN}&image_type=photo&q=${searchString}`)
         .then((results)=>{
