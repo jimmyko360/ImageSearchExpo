@@ -6,19 +6,17 @@ export const ImageContext = createContext({});
 
 export const ImageProvider = ({children}) => {
   const [images, setImages] = useState([]);
-  const [details, setDetails] = useState({
-    // tags: 'click, me'
-  });
-
-  const [id, setId] = useState('')
+  const [details, setDetails] = useState({});
+  const [id, setId] = useState();
+  const [searchTags, setSearchTags] = useState([])
 
   return (
     <ImageContext.Provider value={{
       images,
       details,
-      setDetails,
       id,
       setId,
+      searchTags,
       findImages: (searchString) => {
         axios.get(`https://pixabay.com/api/?key=${API_TOKEN}&image_type=photo&q=${searchString}`)
         .then((results)=>{
@@ -28,10 +26,11 @@ export const ImageProvider = ({children}) => {
           console.log('Error Searching Images:', err)
         })
       },
-      getDetails: (imageID) => {
-        axios.get(`https://pixabay.com/api/?key=${API_TOKEN}&image_type=photo&id=${imageID}`)
+      getDetails: () => {
+        axios.get(`https://pixabay.com/api/?key=${API_TOKEN}&image_type=photo&id=${id}`)
         .then((results) => {
-          setDetails(results.data.hits[0])
+          setSearchTags(results.data.hits[0].tags.split(','));
+          setDetails(results.data.hits[0]);
         })
         .catch((err) => {
           console.log('Error Getting Image Details:', err)

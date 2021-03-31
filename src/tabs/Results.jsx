@@ -4,7 +4,11 @@ import {ImageContext} from '../ImageProvider.jsx'
 
 
 export const Results = ({navigation}) => {
-  const {images, getDetails, setId} = useContext(ImageContext);
+  const {
+    images,
+    getDetails,
+    setId
+  } = useContext(ImageContext);
 
   return (
     <View>
@@ -22,8 +26,6 @@ export const Results = ({navigation}) => {
           return (
             <TouchableOpacity
             onPress={()=>{
-              // getDetails(item.id);
-              //set state with item.id to pass to Details tab
               setId(item.id.toString())
               navigation.navigate('Details');
             }}>

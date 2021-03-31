@@ -27,7 +27,6 @@ export const AppTabs = ({}) => {
               iconName = focused ? 'list-circle' : 'list-circle-outline';
             }
 
-            // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
